@@ -1,11 +1,10 @@
-# Getting Started
+# 加密大链表
 
-### Reference Documentation
+## 写在前面
 
-For further reference, please consider the following sections:
+这个项目是我想用来实现区块链的项目。但是我对区块链的了解不深所以就先取一个这样的名字。
+等我完全了解了再改。
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.0/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.0/maven-plugin/reference/html/#build-image)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.1.0/reference/htmlsingle/#using.devtools)
+## 实现方式
 
+加密大链表 顾名思义 *加密的* 链表 <br>大不大有待考究
