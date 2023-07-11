@@ -1,7 +1,9 @@
 package com.lzh.encipherbiglinkedlist.block.utils;
 
 import com.lzh.encipherbiglinkedlist.block.entity.Block;
+import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -13,6 +15,7 @@ import java.util.Objects;
  * @version V1.0
  * @since 2023/7/7 14:52
  */
+@Component
 public class EncipherUtil {
 
     public Block encipherBlock(Block block){

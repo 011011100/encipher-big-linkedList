@@ -1,5 +1,7 @@
 package com.lzh.encipherbiglinkedlist.block.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
@@ -12,6 +14,7 @@ import java.security.MessageDigest;
  * @version V1.0
  * @since 2023/7/7 15:02
  */
+@Component
 public class SHAUtils {
 
     private static final String KEY_SHA = "SHA";
