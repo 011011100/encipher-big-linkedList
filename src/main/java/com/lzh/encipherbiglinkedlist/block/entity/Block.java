@@ -34,6 +34,9 @@ public class Block {
      */
     private int count;
 
+    /**
+     * 难度目标
+     */
     private String target;
 
     public Block() {
@@ -85,5 +88,16 @@ public class Block {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return "Block{" +
+                "blockData=" + blockData +
+                ", previousBlockHash='" + previousBlockHash + '\'' +
+                ", createTime=" + createTime +
+                ", count=" + count +
+                ", target='" + target + '\'' +
+                '}';
     }
 }
