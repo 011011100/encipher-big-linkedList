@@ -27,7 +27,7 @@ public class BlockServiceImpl implements BlockService {
 
     /**
      * <p>
-     * 创建区块并返回加密信息<br>
+     * 创建区块并返回<br>
      * </p>
      *
      * @param target    难度目标
@@ -37,12 +37,30 @@ public class BlockServiceImpl implements BlockService {
      * @since 14:48 2023/7/7
      **/
     @Override
-    public String createBlock(String target, Map<String, String> blockData) {
+    public Block createBlock(String target, Map<String, String> blockData) {
         Block block = new Block();
         block.setCreateTime(new Date());
         block.setBlockData(blockData);
         block.setTarget(target);
-        Block encipherBlock = encipherUtil.encipherBlock(block);
-        return SHAUtils.encodeSHA(encipherBlock.toString());
+        return encipherUtil.encipherBlock(block);
+    }
+
+    /**
+     * <p>
+     * 在上一个块上添加新的块<br>
+     * </p>
+     *
+     * @param block     上一个块
+     * @param target    难度目标
+     * @param blockData 块内容
+     * @return java.lang.String
+     * @author LZH
+     * @since 17:22 2023/7/11
+     **/
+    @Override
+    public Block joinBlock(Block block, String target, Map<String, String> blockData) {
+        Block newBlock = this.createBlock(target, blockData);
+        newBlock.setPreviousBlockHash(SHAUtils.encodeSHA(block.toString()));
+        return newBlock;
     }
 }
