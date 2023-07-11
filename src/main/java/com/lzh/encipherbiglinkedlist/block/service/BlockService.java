@@ -1,6 +1,8 @@
 package com.lzh.encipherbiglinkedlist.block.service;
 
 
+import com.lzh.encipherbiglinkedlist.block.entity.Block;
+
 import java.util.Map;
 
 /**
@@ -24,5 +26,18 @@ public interface BlockService {
      * @param blockData 块内容
      * @return java.lang.String
      **/
-    String createBlock(String target, Map<String,String> blockData);
+    Block createBlock(String target, Map<String,String> blockData);
+
+    /**
+     * <p>
+     * 在上一个块上添加新的块<br>
+     * </p>
+     * @author LZH
+     * @since 17:22 2023/7/11
+     * @param block 上一个块
+     * @param target 难度目标
+     * @param blockData 块内容
+     * @return java.lang.String
+     **/
+    Block joinBlock(Block block, String target, Map<String,String> blockData);
 }
