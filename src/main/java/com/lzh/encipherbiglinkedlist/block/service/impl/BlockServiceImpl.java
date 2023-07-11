@@ -27,7 +27,7 @@ public class BlockServiceImpl implements BlockService {
 
     /**
      * <p>
-     * 创建区块<br>
+     * 创建区块并返回加密信息<br>
      * </p>
      *
      * @param target    难度目标

@@ -16,7 +16,7 @@ public interface BlockService {
 
     /**
      * <p>
-     * 创建区块<br>
+     * 创建区块并返回加密信息<br>
      * </p>
      * @author LZH
      * @since 14:48 2023/7/7
