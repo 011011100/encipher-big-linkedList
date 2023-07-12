@@ -1,7 +1,8 @@
 package com.lzh.encipherbiglinkedlist.block.service;
 
 
-import com.lzh.encipherbiglinkedlist.block.entity.Block;
+import com.lzh.encipherbiglinkedlist.block.entity.Block.Block;
+import com.lzh.encipherbiglinkedlist.block.entity.encipher.EncipherData;
 
 import java.util.Map;
 
@@ -40,4 +41,15 @@ public interface BlockService {
      * @return java.lang.String
      **/
     Block joinBlock(Block block, String target, Map<String,String> blockData);
+
+    /**
+     * <p>
+     * 加密块<br>
+     * </p>
+     * @author LZH
+     * @since 16:55 2023/7/12
+     * @param block 块
+     * @return com.lzh.encipherbiglinkedlist.block.entity.encipher.EncipherData
+     **/
+    EncipherData encipherBlock(Block block);
 }
