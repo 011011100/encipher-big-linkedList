@@ -1,9 +1,8 @@
 package com.lzh.encipherbiglinkedlist.block.utils;
 
-import com.lzh.encipherbiglinkedlist.block.entity.Block;
+import com.lzh.encipherbiglinkedlist.block.entity.Block.Block;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.Objects;
 
 /**
