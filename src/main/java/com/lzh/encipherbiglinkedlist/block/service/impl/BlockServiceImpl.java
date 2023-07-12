@@ -1,12 +1,19 @@
 package com.lzh.encipherbiglinkedlist.block.service.impl;
 
-import com.lzh.encipherbiglinkedlist.block.entity.Block;
+import cn.hutool.core.util.CharsetUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.asymmetric.KeyType;
+import cn.hutool.crypto.asymmetric.RSA;
+import com.lzh.encipherbiglinkedlist.block.entity.Block.Block;
+import com.lzh.encipherbiglinkedlist.block.entity.encipher.EncipherData;
 import com.lzh.encipherbiglinkedlist.block.service.BlockService;
 import com.lzh.encipherbiglinkedlist.block.utils.EncipherUtil;
 import com.lzh.encipherbiglinkedlist.block.utils.SHAUtils;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.security.KeyPair;
 import java.util.Date;
 import java.util.Map;
 
@@ -62,5 +69,22 @@ public class BlockServiceImpl implements BlockService {
         Block newBlock = this.createBlock(target, blockData);
         newBlock.setPreviousBlockHash(SHAUtils.encodeSHA(block.toString()));
         return newBlock;
+    }
+
+    /**
+     * <p>
+     * 加密块<br>
+     * </p>
+     * @author LZH
+     * @since 16:55 2023/7/12
+     * @param block 块
+     * @return com.lzh.encipherbiglinkedlist.block.entity.encipher.EncipherData
+     **/
+    @Override
+    public EncipherData encipherBlock(Block block) {
+        KeyPair pair = SecureUtil.generateKeyPair("RSA" , 1024 , StrUtil.bytes(block.toString(), CharsetUtil.CHARSET_UTF_8));
+        RSA rsa = new RSA(pair.getPrivate(),pair.getPublic());
+        byte[] encrypt = rsa.encrypt(StrUtil.bytes(block.toString(), CharsetUtil.CHARSET_UTF_8), KeyType.PublicKey);
+        return new EncipherData(encrypt,pair.getPublic(),pair.getPrivate());
     }
 }
