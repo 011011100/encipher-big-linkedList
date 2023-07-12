@@ -1,4 +1,6 @@
-package com.lzh.encipherbiglinkedlist.block.entity;
+package com.lzh.encipherbiglinkedlist.block.entity.Block;
+
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 import java.util.Map;
@@ -12,6 +14,7 @@ import java.util.Map;
  * @version V1.0
  * @since 2023/7/7 14:36
  */
+@Accessors(chain = true)
 public class Block {
 
     /**
