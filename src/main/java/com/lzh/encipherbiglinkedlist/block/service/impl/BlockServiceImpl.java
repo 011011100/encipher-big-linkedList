@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.KeyPair;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -65,7 +66,7 @@ public class BlockServiceImpl implements BlockService {
      * @since 17:22 2023/7/11
      **/
     @Override
-    public Block joinBlock(Block block, String target, Map<String, String> blockData) {
+    public Block createBlock(Block block, String target, Map<String, String> blockData) {
         Block newBlock = this.createBlock(target, blockData);
         newBlock.setPreviousBlockHash(SHAUtils.encodeSHA(block.toString()));
         return newBlock;
@@ -87,4 +88,26 @@ public class BlockServiceImpl implements BlockService {
         byte[] encrypt = rsa.encrypt(StrUtil.bytes(block.toString(), CharsetUtil.CHARSET_UTF_8), KeyType.PublicKey);
         return new EncipherData(encrypt,pair.getPublic(),pair.getPrivate());
     }
+
+    /**
+     * <p>
+     * 检测块是否被更改<br>
+     * </p>
+     *
+     * @param blockList 块链
+     * @return java.lang.Boolean
+     * @author LZH
+     * @since 15:00 2023/7/13
+     **/
+    @Override
+    public Boolean checkBlockList(List<Block> blockList) {
+        for (int i = 1, blockListSize = blockList.size(); i < blockListSize; i++) {
+            Block block = blockList.get(i);
+            if (!block.getPreviousBlockHash().equals(encipherUtil.getEncipherBlock(blockList.get(i - 1)))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
