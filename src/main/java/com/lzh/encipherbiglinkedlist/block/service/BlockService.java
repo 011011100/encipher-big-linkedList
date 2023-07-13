@@ -4,6 +4,7 @@ package com.lzh.encipherbiglinkedlist.block.service;
 import com.lzh.encipherbiglinkedlist.block.entity.Block.Block;
 import com.lzh.encipherbiglinkedlist.block.entity.encipher.EncipherData;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,7 +41,7 @@ public interface BlockService {
      * @param blockData 块内容
      * @return java.lang.String
      **/
-    Block joinBlock(Block block, String target, Map<String,String> blockData);
+    Block createBlock(Block block, String target, Map<String,String> blockData);
 
     /**
      * <p>
@@ -52,4 +53,15 @@ public interface BlockService {
      * @return com.lzh.encipherbiglinkedlist.block.entity.encipher.EncipherData
      **/
     EncipherData encipherBlock(Block block);
+
+    /**
+     * <p>
+     * 检测块是否被更改<br>
+     * </p>
+     * @author LZH
+     * @since 15:00 2023/7/13
+     * @param blockList 块链
+     * @return java.lang.Boolean
+     **/
+    Boolean checkBlockList(List<Block> blockList);
 }
