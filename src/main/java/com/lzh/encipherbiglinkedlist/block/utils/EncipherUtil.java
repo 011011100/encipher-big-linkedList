@@ -35,4 +35,13 @@ public class EncipherUtil {
         return block;
     }
 
+    public String getEncipherBlock(Block block) {
+        String blockData = block.getBlockData().toString();
+
+        String encodeSHA = SHAUtils.encodeSHA(blockData);
+        String hexString = Integer.toHexString(block.getCount());
+
+        return SHAUtils.encodeSHA(encodeSHA + hexString);
+    }
+
 }
